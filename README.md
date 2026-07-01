@@ -167,7 +167,7 @@ Von den möglichen Bonus-Kriterien für 12.1.2 haben wir umgesetzt:
   zu verändern.
 - **Fehlerbehandlung bei Verbindungsabbruch:** Der MQTT-Client verbindet
   sich bei einem Abbruch automatisch neu (siehe Abschnitt
-  "Fehlerbehandlung" oben).
+  "Fehlerbehandlung" unten).
 
 ### Fehlerbehandlung
 
