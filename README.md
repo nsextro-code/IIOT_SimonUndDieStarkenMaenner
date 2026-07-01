@@ -158,6 +158,18 @@ Das typische Sägezahn-Muster zeigt, wie jeder Tank kontinuierlich für viele
 Flaschen genutzt wird (Füllstand sinkt), bis er leer ist und automatisch
 wieder nachgefüllt wird (steiler Sprung nach oben).
 
+### Zusatzaufgaben (Bonus)
+
+Von den möglichen Bonus-Kriterien für 12.1.2 haben wir umgesetzt:
+
+- **System über `config.py` konfigurierbar:** Broker-Adresse, Zugangsdaten,
+  Topics und Dateipfade sind zentral in einer Konfigurationsdatei
+  hinterlegt und können dort angepasst werden, ohne den restlichen Code
+  zu verändern.
+- **Fehlerbehandlung bei Verbindungsabbruch:** Der MQTT-Client verbindet
+  sich bei einem Abbruch automatisch neu (siehe Abschnitt
+  "Fehlerbehandlung" oben).
+
 ### Fehlerbehandlung
 
 - Bei Verbindungsabbruch zum Broker wird automatisch erneut verbunden
