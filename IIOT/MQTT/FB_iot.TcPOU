@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.22">
+  <POU Name="FB_iot" Id="{a1b2c3d4-e5f6-4a1b-9c2d-1234567890ab}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_iot
+VAR_INPUT
+    iUSS1 : UINT;  // Fuellstand rot  (Ultraschallsensor 1)
+    iUSS2 : UINT;  // Fuellstand blau (Ultraschallsensor 2)
+    iUSS3 : UINT;  // Fuellstand gruen (Ultraschallsensor 3)
+END_VAR
+VAR
+    fbMqttClient           : FB_IotMqttClient;
+    sMessageToPublish      : STRING(255);
+    tmrSendMessageInterval : TON := (PT := T#10S);
+    first_cycle            : BOOL := TRUE;
+    bStaticPublished       : BOOL := FALSE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF first_cycle THEN
+    fbMqttClient.sHostName     := '158.180.44.197';
+    fbMqttClient.nHostPort     := 1883;
+    fbMqttClient.sTopicPrefix  := 'aut/SoSe26/SimonUndDieStarkenMaenner/';
+    fbMqttClient.sClientId     := 'SimonUndDieStarkenMaenner-LF';
+    fbMqttClient.sUserName     := 'bobm';
+    fbMqttClient.sUserPassword := 'letmein';
+    first_cycle := FALSE;
+END_IF
+
+fbMqttClient.Execute(bConnect := TRUE);
+
+IF fbMqttClient.bConnected THEN
+
+    IF NOT bStaticPublished THEN
+        // 1) Gruppenname
+        sMessageToPublish := 'Simon und die starken Maenner';
+        fbMqttClient.Publish(sTopic := '$$groupsname', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := TRUE);
+
+        // 2) Nachnamen der Mitglieder -> HIER ANPASSEN
+        sMessageToPublish := '<Nachname1> <Nachname2>';
+        fbMqttClient.Publish(sTopic := 'names', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := TRUE);
+
+        // 3) Einheiten je Fuellstand -> ggf. anpassen (g / % / mm ...)
+        sMessageToPublish := 'g';
+        fbMqttClient.Publish(sTopic := 'Fuellstand_rot/$$unit', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := TRUE);
+        fbMqttClient.Publish(sTopic := 'Fuellstand_blau/$$unit', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := TRUE);
+        fbMqttClient.Publish(sTopic := 'Fuellstand_gruen/$$unit', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := TRUE);
+
+        bStaticPublished := TRUE;
+    END_IF
+
+    // 4) Messwerte alle 10s
+    tmrSendMessageInterval(IN := TRUE);
+    IF tmrSendMessageInterval.Q THEN
+        tmrSendMessageInterval(IN := FALSE);
+
+        sMessageToPublish := UINT_TO_STRING(iUSS1);
+        fbMqttClient.Publish(sTopic := 'Fuellstand_rot', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := FALSE);
+
+        sMessageToPublish := UINT_TO_STRING(iUSS2);
+        fbMqttClient.Publish(sTopic := 'Fuellstand_blau', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := FALSE);
+
+        sMessageToPublish := UINT_TO_STRING(iUSS3);
+        fbMqttClient.Publish(sTopic := 'Fuellstand_gruen', pPayload := ADR(sMessageToPublish), nPayloadSize := LEN(sMessageToPublish) + 1, eQoS := TcIotMqttQos.AtMostOnceDelivery, bRetain := TRUE, bQueue := FALSE);
+    END_IF
+END_IF
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
