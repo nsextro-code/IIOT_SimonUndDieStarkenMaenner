@@ -152,7 +152,7 @@ Nach mindestens 15 Minuten Datensammlung sind alle relevanten Daten in
 aller drei Dispenser über die Zeit – rot, blau und grün entsprechen den
 drei Abfüllstationen:
 
-![füllstand](iotFinal/IIOT/Datenspeicher/data/plot_fill_levels.png)
+![füllstand](IIOT/Datenspeicher/data/plot_fill_levels.png)
 
 Das typische Sägezahn-Muster zeigt, wie jeder Tank kontinuierlich für viele
 Flaschen genutzt wird (Füllstand sinkt), bis er leer ist und automatisch
