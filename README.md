@@ -351,9 +351,9 @@ Das vollständige Skript befindet sich in [`classification.py`](classification.p
 ## Hinweis zum Einsatz von KI-Unterstützung
 
 Bei diesem Projekt wurde teilweise Claude (Anthropic) als Hilfsmittel
-eingesetzt – vor allem zum **Debuggen** (Fehlersuche in TwinCAT- und
-Python-Code), zum **Erklären** von Konzepten (z. B. Confusion Matrix,
-F1-Score, MQTT/TF6701-Bibliothek) und zur **Strukturierung/Formulierung**
+eingesetzt – vor allem zum debuggen (Fehlersuche in TwinCAT- und
+Python-Code), zum erkläre von Konzepten (z. B. Confusion Matrix,
+F1-Score, MQTT/TF6701-Bibliothek) und zur Strukturierung/Formulierung
 dieser Dokumentation. Ein Teil der Code-Schnipsel (u. a. Teile von
 `classification.py`) wurde mit Unterstützung von Claude erstellt und
 anschließend von uns überprüft, angepasst und getestet; andere Teile
