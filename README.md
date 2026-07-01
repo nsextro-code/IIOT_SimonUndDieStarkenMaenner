@@ -9,8 +9,7 @@
 ## Überblick
 
 Dieses Repository enthält alle vier Teilaufgaben des IIoT-Projektblocks,
-basierend auf der TwinCAT-Learning-Factory-Simulation (Abfüll-/Etikettier-
-station mit drei Dispensern, Förderband, Portalroboter und Waage):
+basierend auf der TwinCAT-Learning-Factory-Simulation:
 
 | # | Aufgabe | Gewichtung | Status |
 |---|---|---|---|
