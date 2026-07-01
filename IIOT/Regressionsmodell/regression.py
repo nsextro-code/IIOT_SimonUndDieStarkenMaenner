@@ -21,7 +21,7 @@ FEATURE_SETS = [
     ["fill_level_grams_red"],
     ["fill_level_grams_red", "vibration_index_red"],
     ["fill_level_grams_red", "vibration_index_red", "temperature_red"],
-    # Eigene, zusaetzliche Kombinationen mit allen drei Farben:
+    
     ["fill_level_grams_red", "fill_level_grams_blue", "fill_level_grams_green"],
     [
         "fill_level_grams_red", "fill_level_grams_blue", "fill_level_grams_green",
@@ -116,7 +116,7 @@ def main():
     print(f"MSE Test:     {best['mse_test']:.4f}")
     print(format_formula(best["features"], best["model"]))
 
-    # --- Vorhersage fuer X.csv mit dem besten Modell ---
+    #Vorhersage fuer X.csv mit dem besten Modell
     print(f"\nLade {X_CSV} fuer finale Vorhersage ...")
     X_new = pd.read_csv(X_CSV)
 

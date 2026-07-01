@@ -29,14 +29,7 @@ def load_data() -> pd.DataFrame:
 
 
 def extract_oscillation_features(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Wandelt die drop_oscillation-JSON-Strings (500 Messwerte je Flasche)
-    in statistische Features um. Enthaelt insbesondere die laut
-    1_Leistungsbewertung.md geforderten Kennzahlen:
-    RMS, Mean, STD, Min, Max, Range, Median.
-    Zusaetzlich: Nulldurchgaenge, Anzahl echter Peaks und Signalenergie
-    als eigene, ergaenzende Merkmale.
-    """
+    
     means, stds, mins, maxs, ptps, medians, rms_vals = [], [], [], [], [], [], []
     zero_crossings, n_peaks, energy, abs_mean = [], [], [], []
 
@@ -141,8 +134,7 @@ def run_experiment(df: pd.DataFrame, features: list[str], model_kind: str) -> di
         X, y, test_size=TEST_SIZE, random_state=RANDOM_STATE, stratify=y
     )
 
-    # Skalierung ist v.a. fuer kNN wichtig (Distanzmass), schadet
-    # bei Logistischer Regression aber nicht.
+    
     scaler = StandardScaler()
     X_train_s = scaler.fit_transform(X_train)
     X_test_s = scaler.transform(X_test)
@@ -206,7 +198,7 @@ def main():
     plt.savefig(CONFUSION_MATRIX_PNG, dpi=150)
     print(f"\nConfusion-Matrix-Plot gespeichert unter: {CONFUSION_MATRIX_PNG}")
 
-    # F1-Tabelle als Markdown fuer das README generieren
+    # F1-Tabelle als Markdown fuer das README generiert
     print("\n--- F1-Tabelle (Markdown fuer README) ---\n")
     print("| Genutzte Features | Modell-Typ | F1-Score (Training) | F1-Score (Test) |")
     print("|---|---|---|---|")
