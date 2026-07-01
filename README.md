@@ -59,7 +59,7 @@ periodischen Messwerten über die Hilfsvariable `bStaticPublished`:
 | `Fuellstand_gruen` | aktueller Füllstand Dispenser grün (`iUSS3`) |
 
 Alle Nachrichten werden mit `bRetain := TRUE` gesendet, damit auch ein
-später hinzukommender Abonnent (z. B. der Dozent) sofort den letzten
+später hinzukommender Abonnent sofort den letzten
 bekannten Wert sieht, ohne auf den nächsten Sendezyklus warten zu müssen.
 
 ### Einbindung in MAIN
