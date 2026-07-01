@@ -334,22 +334,3 @@ Das vollständige Skript befindet sich in [`classification.py`](classification.p
 
 ---
 
-## Repository-Struktur
-
-```
-.
-├── README.md                          (diese Datei)
-├── FB_iot.TcPOU                       (12.1.1 – TwinCAT MQTT-Client)
-├── config.py                          (12.1.2 – zentrale Konfiguration)
-├── mqtt_client/mqtt_client.py         (12.1.2 – MQTT-Empfang)
-├── database/transform.py              (12.1.2 – Zusammenführung pro Flasche)
-├── database/database.py               (12.1.2 – CSV-Speicherung)
-├── visualisierung/visualisierung.py   (12.1.2 – Live-Plot)
-├── data/bottles.csv                   (gesammelte Trainingsdaten)
-├── data/plot_fill_levels.png          (12.1.2 – Ergebnis-Plot)
-├── regression.py                      (12.3 – Regressionsmodell)
-├── reg_SimonUndDieStarkenMaenner.csv  (12.3 – Vorhersage für X.csv)
-├── classification.py                  (12.4 – Klassifikationsmodell)
-├── confusion_matrix_best_model.png    (12.4 – Confusion-Matrix-Plot)
-└── requirements.txt
-```
