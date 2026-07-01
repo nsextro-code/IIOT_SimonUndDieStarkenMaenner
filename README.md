@@ -94,9 +94,9 @@ fbiot(iUSS1 := iOut_USS1, iUSS2 := iOut_USS2, iUSS3 := iOut_USS3);
 4. Unter dem Topic-Pfad `aut/SoSe26/SimonUndDieStarkenMaenner/` sollten
    die oben beschriebenen Werte ankommen und sich alle 10 Sekunden
    aktualisieren
-![MQTT Explorer Screenshot](IIOT/MQTT/Screenshot%202026-07-01%20171517.png)
----
 
+---
+![MQTT Explorer Screenshot](IIOT/MQTT/Screenshot%202026-07-01%20171517.png)
 ## 12.1.2 Datenspeicherung & Visualisierung (40 %)
 
 Dieses Python-Programm verbindet sich mit dem Kurs-MQTT-Broker und empfängt
