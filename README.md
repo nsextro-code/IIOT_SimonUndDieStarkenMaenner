@@ -356,7 +356,7 @@ Python-Code), zum erkläre von Konzepten (z. B. Confusion Matrix,
 F1-Score, MQTT/TF6701-Bibliothek) und zur Strukturierung/Formulierung
 dieser Dokumentation. Ein Teil der Code-Schnipsel (u. a. Teile von
 `classification.py`) wurde mit Unterstützung von Claude erstellt und
-anschließend von uns überprüft, angepasst und getestet; andere Teile
+anschließend von uns überprüft, angepasst und getestet. Andere Teile
 (z. B. `FB_iot`, Teile der Datenpipeline) haben wir selbst geschrieben.
 Verstanden und verantwortet wird der gesamte eingereichte Code von der
 Gruppe.
