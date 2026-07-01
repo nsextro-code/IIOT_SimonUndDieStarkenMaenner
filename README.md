@@ -328,7 +328,7 @@ Vorhersage, ob eine Flasche beim Vereinzeln beschädigt wurde (`is_cracked`,
 
 ### Confusion Matrix (bestes Modell, Testdaten)
 
-![Confusion Matrix](confusion_matrix_best_model.png)
+![Confusion Matrix](IIOT/Klassifikationsmodell/confusion_matrix_best_model.png)
 
 |              | Predicted: 0 (intakt) | Predicted: 1 (defekt) |
 |--------------|:----------------------:|:-----------------------:|
