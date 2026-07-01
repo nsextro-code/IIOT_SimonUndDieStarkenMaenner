@@ -19,26 +19,7 @@ station mit drei Dispensern, Förderband, Portalroboter und Waage):
 | [12.3](#123-regressionsmodell-für-endgewicht-20) | Regressionsmodell für Endgewicht | 20 % | ✅ |
 | [12.4](#124-klassifikationsmodell-für-defekte-flaschen-20) | Klassifikationsmodell für defekte Flaschen | 20 % | ✅ |
 
-## Architektur
 
-```
-TwinCAT SPS (Learning Factory)
-        │  publiziert eigene Füllstände (12.1.1)
-        ▼
-   MQTT-Broker (158.180.44.197:1883)
-        │  liefert Simulationsdaten (aut/SoSe26/learning_factory_simulation/#)
-        ▼
-Python: mqtt_client.py → transform.py → database.py (12.1.2)
-        │
-        ▼
-   bottles.csv  ──────────────┬───────────────┐
-        │                     │               │
-        ▼                     ▼               ▼
- visualisierung.py      regression.py   classification.py
-     (12.1.2)               (12.3)          (12.4)
-```
-
----
 
 ## 12.1.1 MQTT-Client in TwinCAT (20 %)
 
@@ -171,7 +152,7 @@ Nach mindestens 15 Minuten Datensammlung sind alle relevanten Daten in
 aller drei Dispenser über die Zeit – rot, blau und grün entsprechen den
 drei Abfüllstationen:
 
-![Füllstand-Plot](data/plot_fill_levels.png)
+iotFinal/IIOT/Datenspeicher/data/plot_fill_levels.png
 
 Das typische Sägezahn-Muster zeigt, wie jeder Tank kontinuierlich für viele
 Flaschen genutzt wird (Füllstand sinkt), bis er leer ist und automatisch
